@@ -20,6 +20,7 @@ SOURCES += \
         methodintegral.cpp \
         methodmk.cpp \
         methodrectangles.cpp \
+        methodrichardson.cpp \
         methodsimps.cpp \
         methodtrial.cpp
 
@@ -33,5 +34,6 @@ HEADERS += \
     methodintegral.h \
     methodmk.h \
     methodrectangles.h \
+    methodrichardson.h \
     methodsimps.h \
     methodtrial.h

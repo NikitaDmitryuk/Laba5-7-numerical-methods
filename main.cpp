@@ -11,6 +11,7 @@
 #include "methodrectangles.h"
 #include "methodtrial.h"
 #include "methodsimps.h"
+#include "methodrichardson.h"
 
 using namespace std;
 
@@ -84,8 +85,6 @@ int main(int argc, char *argv[])
     cout << "Интеграл от sin(x) на интервале [0, pi/2] методом МК (0): " << integral.calc(0, M_PI / 2.0) << " + " << integral.getI() - f2Int(0, M_PI / 2.0) << endl;
     integral.setFunc(f3);
     cout << "Интеграл от x / sqrt(5.0 - 4 * x) на интервале [-1, 1] методом МК (0): " << integral.calc(-1, 1) << " + " << integral.getI() - f3Int(-1, 1) << endl;
-    integral.setFunc(f4);
-    cout << "Интеграл от sin(x) + cos(y) на интервале x[-pi/2, pi/2], y[-1, 1] методом МК (0): " << integral.calc(-M_PI / 2.0, M_PI / 2.0, -1, 1) << endl;
 
     cout << "//////////////////////////////////////////////////////////////////////////////////" << endl;
     integral.setMethod(new MethodMK(n, METHOD_SPACE));
@@ -96,12 +95,6 @@ int main(int argc, char *argv[])
     cout << "Интеграл от sin(x) на интервале [0, pi/2] методом МК (1): " << integral.calc(0, M_PI / 2.0) << " + " << integral.getI() - f2Int(0, M_PI / 2.0) << endl;
     integral.setFunc(f3);
     cout << "Интеграл от x / sqrt(5.0 - 4 * x) на интервале [-1, 1] методом МК (1): " << integral.calc(-1, 1) << " + " << integral.getI() - f3Int(-1, 1) << endl;
-
-    cout << "//////////////////////////////////////////////////////////////////////////////////" << endl;
-    integral.setMethod(new MethodMK(n, METHOD_I1));
-
-    integral.setFunc(f7);
-    cout << "Интеграл от exp(x) на интервале [0, 1] методом МК (4): " << integral.calc(1.0) << " + " << "дельта Int" << endl;
 
     cout << "//////////////////////////////////////////////////////////////////////////////////" << endl;
     integral.setMethod(new MethodRectangles(h, CENTER));
@@ -152,6 +145,16 @@ int main(int argc, char *argv[])
     cout << "Интеграл от sin(x) на интервале [0, pi/2] методом Симпсона с шагом " << h << ": " << integral.calc(0, M_PI / 2.0) << " + " << integral.getI() - f2Int(0, M_PI / 2.0) << endl;
     integral.setFunc(f3);
     cout << "Интеграл от x / sqrt(5.0 - 4 * x) на интервале [-1, 1] методом Симпсона с шагом " << h << ": " << integral.calc(-1, 1) << " + " << integral.getI() - f3Int(-1, 1) << endl;
+
+    cout << "//////////////////////////////////////////////////////////////////////////////////" << endl;
+    integral.setMethod(new MethodRichardson(h));
+
+    integral.setFunc(f1);
+    cout << "Интеграл от exp(x) на интервале [0, 1] методом Экстраполяции Ричардсона с шагом " << h << ": " << integral.calc(0, 1.0) << " + " << integral.getI() - f1Int(0, 1.0) << endl;
+    integral.setFunc(f2);
+    cout << "Интеграл от sin(x) на интервале [0, pi/2] методом Экстраполяции Ричардсона с шагом " << h << ": " << integral.calc(0, M_PI / 2.0) << " + " << integral.getI() - f2Int(0, M_PI / 2.0) << endl;
+    integral.setFunc(f3);
+    cout << "Интеграл от x / sqrt(5.0 - 4 * x) на интервале [-1, 1] методом Экстраполяции Ричардсона с шагом " << h << ": " << integral.calc(-1, 1) << " + " << integral.getI() - f3Int(-1, 1) << endl;
 
 
     return qt.exec();
