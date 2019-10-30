@@ -10,6 +10,7 @@
 #include "methodmk.h"
 #include "methodrectangles.h"
 #include "methodtrial.h"
+#include "methodsimps.h"
 
 using namespace std;
 
@@ -141,6 +142,16 @@ int main(int argc, char *argv[])
     cout << "Интеграл от sin(x) на интервале [0, pi/2] методом трапеций с шагом " << h << ": " << integral.calc(0, M_PI / 2.0) << " + " << integral.getI() - f2Int(0, M_PI / 2.0) << endl;
     integral.setFunc(f3);
     cout << "Интеграл от x / sqrt(5.0 - 4 * x) на интервале [-1, 1] методом трапеций с шагом " << h << ": " << integral.calc(-1, 1) << " + " << integral.getI() - f3Int(-1, 1) << endl;
+
+    cout << "//////////////////////////////////////////////////////////////////////////////////" << endl;
+    integral.setMethod(new MethodSimps(h));
+
+    integral.setFunc(f1);
+    cout << "Интеграл от exp(x) на интервале [0, 1] методом Симпсона с шагом " << h << ": " << integral.calc(0, 1.0) << " + " << integral.getI() - f1Int(0, 1.0) << endl;
+    integral.setFunc(f2);
+    cout << "Интеграл от sin(x) на интервале [0, pi/2] методом Симпсона с шагом " << h << ": " << integral.calc(0, M_PI / 2.0) << " + " << integral.getI() - f2Int(0, M_PI / 2.0) << endl;
+    integral.setFunc(f3);
+    cout << "Интеграл от x / sqrt(5.0 - 4 * x) на интервале [-1, 1] методом Симпсона с шагом " << h << ": " << integral.calc(-1, 1) << " + " << integral.getI() - f3Int(-1, 1) << endl;
 
 
     return qt.exec();

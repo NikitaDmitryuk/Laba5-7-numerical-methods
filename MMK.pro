@@ -20,6 +20,7 @@ SOURCES += \
         methodintegral.cpp \
         methodmk.cpp \
         methodrectangles.cpp \
+        methodsimps.cpp \
         methodtrial.cpp
 
 # Default rules for deployment.
@@ -32,4 +33,5 @@ HEADERS += \
     methodintegral.h \
     methodmk.h \
     methodrectangles.h \
+    methodsimps.h \
     methodtrial.h
