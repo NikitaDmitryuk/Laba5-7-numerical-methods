@@ -21,6 +21,7 @@ double f(int num, ...){
     va_start(args, num);
     double x = va_arg(args, double);
     va_end(args);
+
     return x;
 }
 
@@ -29,11 +30,8 @@ double f1(int num, ...){
     va_start(args, num);
     double x = va_arg(args, double);
     va_end(args);
-    return exp(x);
-}
 
-double f1Int(double a, double b){
-    return exp(b) - exp(a);
+    return exp(x);
 }
 
 double f2(int num, ...){
@@ -44,20 +42,13 @@ double f2(int num, ...){
     return sin(x);
 }
 
-double f2Int(double a, double b){
-    return -cos(b) + cos(a);
-}
-
 double f3(int num, ...){
     va_list args;
     va_start(args, num);
     double x = va_arg(args, double);
     va_end(args);
-    return x / sqrt(5.0 - 4 * x);
-}
 
-double f3Int(double a, double b){
-    return pow(-4 * b + 5, 3.0 / 2.0) / 24.0 - 5 * sqrt(-4 * b + 5) / 8.0 - (pow(-4 * a + 5, 3.0 / 2.0) / 24.0 - 5 * sqrt(-4 * a + 5) / 8.0);
+    return x / sqrt(5.0 - 4 * x);
 }
 
 double f7(int num, ...){
@@ -69,6 +60,19 @@ double f7(int num, ...){
     }
     double r = sqrt((x[0] - x[3]) * (x[0] - x[3]) + (x[1] - x[4]) * (x[1] - x[4]) + (x[2] - x[5]) * (x[2] - x[5]));
     return 1.0 / M_PI / pow(r, 1.0);
+}
+
+double f1Int(double a, double b){
+    return exp(b) - exp(a);
+}
+
+
+double f2Int(double a, double b){
+    return -cos(b) + cos(a);
+}
+
+double f3Int(double a, double b){
+    return pow(-4 * b + 5, 3.0 / 2.0) / 24.0 - 5 * sqrt(-4 * b + 5) / 8.0 - (pow(-4 * a + 5, 3.0 / 2.0) / 24.0 - 5 * sqrt(-4 * a + 5) / 8.0);
 }
 
 
