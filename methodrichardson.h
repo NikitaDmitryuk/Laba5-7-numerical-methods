@@ -11,7 +11,7 @@ class MethodRichardson : public MethodIntegral
 {
 public:
     MethodRichardson(double _h);
-    double calcInt(double (*func)(double x), double a, double b);
+    double calcInt(Func foo, double a, double b);
 private:
     double h;
 };

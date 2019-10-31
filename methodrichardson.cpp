@@ -5,10 +5,10 @@ MethodRichardson::MethodRichardson(double _h)
     h = _h;
 }
 
-double MethodRichardson::calcInt(double (*func)(double x), double a, double b){
+double MethodRichardson::calcInt(Func foo, double a, double b){
 
     CalcIntegral integral = CalcIntegral();
-    integral.setFunc(func);
+    integral.setFunc(foo);
     integral.setMethod(new MethodSimps(h));
     double r1 = integral.calc(a, b); //Simpson(5);
     integral.setMethod(new MethodSimps(h / 2.0));

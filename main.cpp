@@ -12,14 +12,23 @@
 #include "methodtrial.h"
 #include "methodsimps.h"
 #include "methodrichardson.h"
+#include "stdarg.h"
 
 using namespace std;
 
-double f(double x){
+double f(int num, ...){
+    va_list args;
+    va_start(args, num);
+    double x = va_arg(args, double);
+    va_end(args);
     return x;
 }
 
-double f1(double x){
+double f1(int num, ...){
+    va_list args;
+    va_start(args, num);
+    double x = va_arg(args, double);
+    va_end(args);
     return exp(x);
 }
 
@@ -27,7 +36,11 @@ double f1Int(double a, double b){
     return exp(b) - exp(a);
 }
 
-double f2(double x){
+double f2(int num, ...){
+    va_list args;
+    va_start(args, num);
+    double x = va_arg(args, double);
+    va_end(args);
     return sin(x);
 }
 
@@ -35,7 +48,11 @@ double f2Int(double a, double b){
     return -cos(b) + cos(a);
 }
 
-double f3(double x){
+double f3(int num, ...){
+    va_list args;
+    va_start(args, num);
+    double x = va_arg(args, double);
+    va_end(args);
     return x / sqrt(5.0 - 4 * x);
 }
 
@@ -43,12 +60,14 @@ double f3Int(double a, double b){
     return pow(-4 * b + 5, 3.0 / 2.0) / 24.0 - 5 * sqrt(-4 * b + 5) / 8.0 - (pow(-4 * a + 5, 3.0 / 2.0) / 24.0 - 5 * sqrt(-4 * a + 5) / 8.0);
 }
 
-double f4(double x, double y){
-    return sin(x) + cos(y);
-}
-
-double f7(double x1, double y1, double z1, double x2, double y2, double z2){
-    double r = sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2) + (z1 - z2) * (z1 - z2));
+double f7(int num, ...){
+    double x[6];
+    va_list args;
+    va_start(args, num);
+    for(;num >= 0;num--){
+        x[num] = va_arg(args, double);
+    }
+    double r = sqrt((x[0] - x[3]) * (x[0] - x[3]) + (x[1] - x[4]) * (x[1] - x[4]) + (x[2] - x[5]) * (x[2] - x[5]));
     return 1.0 / M_PI / pow(r, 1.0);
 }
 

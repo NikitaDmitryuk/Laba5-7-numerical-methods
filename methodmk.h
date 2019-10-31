@@ -17,9 +17,8 @@ class MethodMK : public MethodIntegral
 {
 public:
     MethodMK(int _n, int _method);
-    double calcInt(double (*func)(double x), double a, double b);
-    double calcInt(double (*func)(double x, double y), double x1, double x2, double y1, double y2);
-    double calcInt(double (*func)(double x1, double y1, double z1, double x2, double y2, double z2), double r);
+    double calcInt(Func foo, double a, double b);
+    double calcInt(Func foo, double r);
 
 private:
     int n, method;
